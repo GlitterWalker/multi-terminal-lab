@@ -1,0 +1,91 @@
+{
+  "title": "Linux + Docker Hands-on Challenge",
+  "description": "Complete all 16 questions. Final step submits your completion.",
+  "details": {
+    "intro": {
+      "text": "Welcome! You have 16 tasks: 8 Linux, 7 Docker, 1 Final submission.\n\n⚠️ Important: Run 'newgrp docker' before starting Docker questions."
+    },
+    "steps": [
+      {
+        "title": "Q1: List files",
+        "text": "List all files inside /home/ubuntu/lab",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q2: Create file",
+        "text": "Create a file named test1.txt inside /home/ubuntu/lab",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q3: Create directory",
+        "text": "Create a directory named project inside /home/ubuntu/lab",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q4: Copy file",
+        "text": "Copy file1.txt to file1_copy.txt",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q5: Move file",
+        "text": "Move file2.txt into dir1",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q6: Delete file",
+        "text": "Delete file1_copy.txt",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q7: Count lines",
+        "text": "Create a file data.txt with at least 3 lines",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q8: Permissions",
+        "text": "Change permission of data.txt to 777",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q9: Run alpine",
+        "text": "Run an alpine container",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q10: Run container with name",
+        "text": "Run an alpine container with name mycontainer",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q11: List containers",
+        "text": "List all running containers",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q12: Stop container",
+        "text": "Stop container named mycontainer",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q13: Remove container",
+        "text": "Remove container named mycontainer",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q14: Run nginx (no port)",
+        "text": "Run an nginx container",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q15: Check docker images",
+        "text": "List all docker images",
+        "verify": "verify.sh"
+      },
+      {
+        "title": "Q16: Submit",
+        "text": "Send completion using curl command (details will be provided)",
+        "verify": "verify.sh"
+      }
+    ]
+  }
+}
