@@ -1,0 +1,14 @@
+@"
+[Unit]
+Description=Lab Flask app
+After=network.target docker.service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/project
+ExecStart=/home/ubuntu/project/venv/bin/python app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+"@ | Set-Content lab.service

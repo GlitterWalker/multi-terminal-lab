@@ -1,2 +1,9 @@
 description.txt
 .DS_Store
+@"
+venv/
+results/
+__pycache__/
+*.pem
+*.log
+"@ | Set-Content .gitignore

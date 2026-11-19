@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from pages import HOME_HTML, BOARD_HTML
+from flask import Response
 import uuid
 import subprocess
 import time
@@ -10,8 +12,8 @@ app = Flask(__name__)
 
 # 🔧 CONFIG
 BASE_PORT = 8000
-EC2_IP = "51.21.169.47"
-BUCKET_NAME = "lab-leaderboard"
+EC2_IP = "13.235.86.32"
+BUCKET_NAME = "lab-leaderboard1"
 
 sessions = {}
 
@@ -41,14 +43,19 @@ def get_free_port():
 # 🔹 Home
 @app.route("/")
 def home():
-    return "Lab System Running"
+    return Response(HOME_HTML, mimetype="text/html")
+
+
+@app.route("/board")
+def board():
+    return Response(BOARD_HTML, mimetype="text/html")
 
 
 # 🔹 Start Lab
 @app.route("/start", methods=["POST"])
 def start_lab():
-    data = request.json
-    name = data.get("name")
+    data = request.get_json(silent=True) or {}
+    name = (data.get("name") or "").strip()[:30]
 
     if not name:
         return jsonify({"error": "Name required"}), 400
@@ -70,8 +77,13 @@ def start_lab():
 
         #  Start terminal (ttyd)
         subprocess.Popen([
-            "ttyd", "-p", str(port),
-            "docker", "attach", container_name
+            "ttyd", "-W", "-p", str(port),
+            "-t", "fontSize=18",
+            "docker", "exec", "-it",
+            "-e", f"STUDENT_NAME={name}",
+            "-e", f"BUCKET_NAME={BUCKET_NAME}",
+            "-e", f"BOARD_URL=http://{EC2_IP}:5000/board",
+            container_name, "python3", "/home/student/quiz.py"
         ])
 
         sessions[session_id] = {
@@ -152,3 +164,4 @@ def cleanup_all():
 
 #  Run app
 if __name__ == "__main__":
+        app.run(host="0.0.0.0", port=5000)

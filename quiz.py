@@ -3,7 +3,7 @@ import time
 import json
 import boto3
 
-BUCKET_NAME = "lab-leaderboard"
+BUCKET_NAME = "lab-leaderboard1"
 
 questions = [
     {"q": "Create a file named file.txt", "check": "test -f file.txt"},
